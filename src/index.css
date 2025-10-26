@@ -6,3 +6,15 @@
 main{
     flex-grow: 1;
 }
+.color{
+    background-color: #FFF000;
+    width: 150px;
+    height: 150px;
+}
+.fondocontainerForm{
+    background-color: #A7D5F7;
+    height: 240px;
+}
+.inputForm{
+    width: 420px !important;
+}
