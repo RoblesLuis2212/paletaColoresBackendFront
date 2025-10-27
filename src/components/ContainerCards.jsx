@@ -3,13 +3,16 @@ import Cards from './Cards';
 
 const ContainerCards = () => {
     return (
-        <section className='container border border-ligth mt-4'>
-            <div className="row">
-                <div className="col-12 col-md-4">
-                    <Cards></Cards>
+        <>
+            <h2 className='text-center mt-2'>Tus Colores</h2>
+            <section className='container mt-2'>
+                <div className="row">
+                    <div className="col-12 col-md-4">
+                        <Cards></Cards>
+                    </div>
                 </div>
-            </div>
-        </section>
+            </section>
+        </>
     );
 };
 

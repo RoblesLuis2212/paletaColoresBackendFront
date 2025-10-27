@@ -23,6 +23,11 @@ main{
     top: 105px;
     left: 650px;
 }
+.colorCards{
+    background-color: yellow;
+    width: 100px;
+    height: 150px;
+}
 /*Media query para dispositivos mobile*/
 @media(max-width: 768px){
     .botonGuardar{
