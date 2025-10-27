@@ -18,3 +18,21 @@ main{
 .inputForm{
     width: 420px !important;
 }
+.botonGuardar{
+    position: relative;
+    top: 120px;
+    left: 650px;
+}
+/*Media query para dispositivos mobile*/
+@media(max-width: 768px){
+    .botonGuardar{
+        left: 5px;
+        width: 100%;
+    }
+}
+/*media query para tablets*/
+@media(min-width: 769px) and (max-width: 1024px){
+    .botonGuardar{
+        left: 360px;
+    }
+}

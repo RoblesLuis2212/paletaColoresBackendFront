@@ -21,7 +21,7 @@ const FormularioColores = () => {
                                 We'll never share your email with anyone else.
                             </Form.Text>
                         </Form.Group>
-                        <Button variant="primary" type="submit">
+                        <Button variant="success" type="submit" className='botonGuardar'>
                             Guardar
                         </Button>
                     </Form>
