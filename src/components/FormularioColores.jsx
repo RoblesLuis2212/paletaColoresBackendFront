@@ -45,7 +45,7 @@ const FormularioColores = () => {
                                 <Form.Control type='text' placeholder='Ingrese un color en hexadecimal (opcional)' className='mt-3' {...register("codigo_hex", {
                                     pattern: {
                                         value: /^#([0-9A-Fa-f]{3}){1,2}$/,
-                                        message: "Por favor ingrese un codigo valido"
+                                        message: "El codigo ingresado no es valido"
                                     }
                                 })} />
                                 <Form.Text className='text-danger'>
