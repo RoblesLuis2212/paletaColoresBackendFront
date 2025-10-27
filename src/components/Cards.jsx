@@ -2,7 +2,7 @@ import React from 'react';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
-const Cards = ({ color, codigo }) => {
+const Cards = ({ color, codigo, handleShow }) => {
     return (
         <Card style={{ width: '230px' }} className='mt-3 h-100'>
             <Card.Header className='p-0'>
@@ -13,7 +13,7 @@ const Cards = ({ color, codigo }) => {
                 <p>{codigo ? codigo : "No Disponible"}</p>
             </Card.Body>
             <div className='mb-2'>
-                <Button variant='secondary' className='me-3 ms-3'>
+                <Button variant='secondary' className='me-3 ms-3' onClick={() => handleShow()}>
                     <i className="bi bi-pencil-fill me-1"></i>
                     Editar
                 </Button>
