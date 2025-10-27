@@ -20,7 +20,7 @@ main{
 }
 .botonGuardar{
     position: relative;
-    top: 80px;
+    top: 105px;
     left: 650px;
 }
 /*Media query para dispositivos mobile*/
