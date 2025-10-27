@@ -13,12 +13,24 @@ const ContainerCards = () => {
         <>
             <h2 className='text-center mt-2'>Tus Colores</h2>
             <section className='container mt-2'>
-                <div className="row">
-                    <div className="col-12 col-md-4">
+                <div className="row g-3">
+                    <div className="col-12 col-md-4 d-flex justify-content-center">
                         <Cards color="Yellow" codigo="#FFFF00" handleShow={handleShow}></Cards>
                     </div>
-                    <div className="col-12 col-md-4">
-                        <Cards color="Red" codigo=""></Cards>
+                    <div className="col-12 col-md-4 d-flex justify-content-center">
+                        <Cards color="Yellow" codigo="#FFFF00" handleShow={handleShow}></Cards>
+                    </div>
+                    <div className="col-12 col-md-4 d-flex justify-content-center">
+                        <Cards color="Yellow" codigo="#FFFF00" handleShow={handleShow}></Cards>
+                    </div>
+                    <div className="col-12 col-md-4 d-flex justify-content-center">
+                        <Cards color="Yellow" codigo="#FFFF00" handleShow={handleShow}></Cards>
+                    </div>
+                    <div className="col-12 col-md-4 d-flex justify-content-center">
+                        <Cards color="Yellow" codigo="#FFFF00" handleShow={handleShow}></Cards>
+                    </div>
+                    <div className="col-12 col-md-4 d-flex justify-content-center">
+                        <Cards color="Yellow" codigo="#FFFF00" handleShow={handleShow}></Cards>
                     </div>
                 </div>
             </section>
