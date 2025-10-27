@@ -8,7 +8,10 @@ const ContainerCards = () => {
             <section className='container mt-2'>
                 <div className="row">
                     <div className="col-12 col-md-4">
-                        <Cards></Cards>
+                        <Cards color="Yellow" codigo="#FFFF00"></Cards>
+                    </div>
+                    <div className="col-12 col-md-4">
+                        <Cards color="Red" codigo=""></Cards>
                     </div>
                 </div>
             </section>
