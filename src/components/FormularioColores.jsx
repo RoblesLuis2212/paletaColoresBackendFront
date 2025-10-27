@@ -1,8 +1,16 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import { useForm } from 'react-hook-form';
 
 const FormularioColores = () => {
+    const { register, handleSubmit, formState: { errors }, reset } = useForm();
+
+    const postValidaciones = (data) => {
+        console.log(data);
+        reset();
+    }
+
     return (
         <section className='container border border-light'>
             <div className="row">
@@ -14,11 +22,32 @@ const FormularioColores = () => {
                     </div>
                 </div>
                 <div className="col-12 col-md-8 border border-light fondocontainerForm">
-                    <Form className='mt-5'>
+                    <Form onSubmit={handleSubmit(postValidaciones)} className='mt-5'>
                         <Form.Group className="mb-3">
-                            <Form.Control type="text" placeholder="Ingrese un color ej: blue" />
-                            <Form.Text className="text-muted">
-                                We'll never share your email with anyone else.
+                            <Form.Control type="text" placeholder="Ingrese un color ej: blue" {...register("nombreColor", {
+                                required: "Este campo es obligatorio",
+                                minLength: {
+                                    value: 3,
+                                    message: "El nombre del color debe contener minimo 3 caracteres"
+                                },
+                                maxLength: {
+                                    value: 12,
+                                    message: "El nombre del color debe contener maximo 12 caracteres"
+                                }
+                            })} />
+                            <Form.Text className="text-danger">
+                                {errors.nombreColor?.message}
+                            </Form.Text>
+                        </Form.Group>
+                        <Form.Group>
+                            <Form.Control type='text' placeholder='Ingrese un color en hexadecimal (opcional)' className='mt-3' {...register("codigo_hex", {
+                                pattern: {
+                                    value: /^#([0-9A-Fa-f]{3}){1,2}$/,
+                                    message: "Por favor ingrese un codigo valido"
+                                }
+                            })} />
+                            <Form.Text className='text-danger'>
+                                {errors.codigo_hex?.message}
                             </Form.Text>
                         </Form.Group>
                         <Button variant="success" type="submit" className='botonGuardar'>
