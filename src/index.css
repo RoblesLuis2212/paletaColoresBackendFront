@@ -1,0 +1,42 @@
+#root{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+main{
+    flex-grow: 1;
+}
+.color{
+    background-color: #FFF000;
+    width: 150px;
+    height: 150px;
+}
+.fondocontainerForm{
+    background-color: #A7D5F7;
+    height: 240px;
+}
+.inputForm{
+    width: 420px !important;
+}
+.botonGuardar{
+    position: relative;
+    top: 105px;
+    left: 650px;
+}
+.colorCards{
+    width: 100px;
+    height: 150px;
+}
+/*Media query para dispositivos mobile*/
+@media(max-width: 768px){
+    .botonGuardar{
+        left: 5px;
+        width: 100%;
+    }
+}
+/*media query para tablets*/
+@media(min-width: 769px) and (max-width: 1024px){
+    .botonGuardar{
+        left: 375px;
+    }
+}
