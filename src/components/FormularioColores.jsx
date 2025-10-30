@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import { useForm } from 'react-hook-form';
+import { set, useForm } from 'react-hook-form';
 import ContainerCards from './ContainerCards';
 import { crearColorAPI, listarColoresAPI } from '../helpers/queries.js';
 
@@ -12,6 +12,11 @@ const FormularioColores = () => {
         const respuesta = await crearColorAPI(data);
         if (respuesta.status === 201) {
             alert("Color creado exitosamente")
+            const respuestaColores = await listarColoresAPI();
+            if (respuestaColores.status === 200) {
+                const datosActualizados = await respuestaColores.json();
+                setColores(datosActualizados);
+            }
         } else {
             alert("Error al crear el color");
         }
