@@ -3,7 +3,7 @@ import Cards from './Cards';
 import ModalEditarColor from './ModalEditarColor';
 import FiltroColores from './FiltroColores';
 
-const ContainerCards = ({ colores }) => {
+const ContainerCards = ({ colores, setColores }) => {
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
@@ -18,7 +18,7 @@ const ContainerCards = ({ colores }) => {
                 <div className="row g-3">
                     {colores.map((itemColor) => (
                         <div className="col-12 col-md-4 d-flex justify-content-center" key={itemColor._id}>
-                            <Cards color="Yellow" codigo="#FFFF00" handleShow={handleShow} itemColor={itemColor}></Cards>
+                            <Cards handleShow={handleShow} itemColor={itemColor} setColores={setColores}></Cards>
                         </div>
                     ))}
                 </div>

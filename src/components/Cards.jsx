@@ -1,8 +1,43 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import { borrarColorAPI, listarColoresAPI } from '../helpers/queries.js';
+import Swal from 'sweetalert2';
 
-const Cards = ({ itemColor, handleShow }) => {
+const Cards = ({ itemColor, setColores, handleShow }) => {
+    const borrarColor = () => {
+        Swal.fire({
+            title: "¿Estás seguro?",
+            text: `Vas a eliminar el producto "${itemColor.nombreColor}". Esta acción no se puede deshacer.`,
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#d33",
+            cancelButtonColor: "#3085d6",
+            confirmButtonText: "Sí, eliminar",
+            cancelButtonText: "Cancelar",
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+                const respuesta = await borrarColorAPI(itemColor._id);
+                if (respuesta.status === 200) {
+                    Swal.fire({
+                        title: "Eliminado",
+                        text: `El color "${itemColor.nombreColor}" fue eliminado correctamente.`,
+                        icon: "success",
+                        timer: 2000,
+                    });
+                    const respuesta = await listarColoresAPI();
+                    if (respuesta.status === 200) {
+                        const coloresRestantes = await respuesta.json();
+                        setColores(coloresRestantes);
+
+                    }
+                } else {
+                    alert("Error al eliminar el color")
+                }
+            }
+        })
+    }
+
     return (
         <Card style={{ width: '230px' }} className='mt-3 h-100'>
             <Card.Header className='p-0'>
@@ -17,7 +52,7 @@ const Cards = ({ itemColor, handleShow }) => {
                     <i className="bi bi-pencil-fill me-1"></i>
                     Editar
                 </Button>
-                <Button variant="danger">
+                <Button variant="danger" onClick={borrarColor}>
                     <i className="bi bi-trash3 me-1"></i>
                     Borrar
                 </Button>

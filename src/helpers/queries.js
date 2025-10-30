@@ -26,3 +26,15 @@ export const crearColorAPI = async (color) => {
     return null;
   }
 };
+
+export const borrarColorAPI = async (id) => {
+  try {
+    const respuesta = await fetch(`${backendColores}${id}`, {
+      method: "DELETE",
+    });
+    return respuesta;
+  } catch (err) {
+    console.error(err);
+    return null;
+  }
+};

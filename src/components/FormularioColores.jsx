@@ -83,7 +83,7 @@ const FormularioColores = () => {
                     </div>
                 </div>
             </section>
-            <ContainerCards colores={colores}></ContainerCards>
+            <ContainerCards colores={colores} setColores={setColores}></ContainerCards>
         </>
     );
 };
