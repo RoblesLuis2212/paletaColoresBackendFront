@@ -5,6 +5,7 @@ import Form from 'react-bootstrap/Form';
 import { useForm } from 'react-hook-form';
 import { editarColorAPI, listarColoresAPI } from '../helpers/queries';
 import { useEffect } from 'react';
+import Swal from 'sweetalert2';
 
 const ModalEditarColor = ({ show, handleClose, colores, colorSeleccionado, setColores }) => {
     //validacion del formulario
@@ -18,7 +19,7 @@ const ModalEditarColor = ({ show, handleClose, colores, colorSeleccionado, setCo
     }, [colorSeleccionado, setValue])
 
     const postValidaciones = async (data) => {
-        const respuesta = await editarColorAPI(coloresSeleccionado._id, data);
+        const respuesta = await editarColorAPI(colorSeleccionado._id, data);
         const rescoloresRestante = await listarColoresAPI();
         if (respuesta.status === 200) {
             Swal.fire({
@@ -28,6 +29,7 @@ const ModalEditarColor = ({ show, handleClose, colores, colorSeleccionado, setCo
             });
             const coloresRestantes = await rescoloresRestante.json();
             setColores(coloresRestantes);
+            handleClose();
         } else {
             alert("Ocurrio un error al actualizar el color");
         }
