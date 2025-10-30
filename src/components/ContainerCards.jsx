@@ -2,12 +2,24 @@ import React, { use, useState } from 'react';
 import Cards from './Cards';
 import ModalEditarColor from './ModalEditarColor';
 import FiltroColores from './FiltroColores';
+import { obtenerIDcolorAPI } from '../helpers/queries';
 
 const ContainerCards = ({ colores, setColores }) => {
     const [show, setShow] = useState(false);
+    const [colorSeleccionado, setColorSeleccionado] = useState(null);
+
 
     const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+    const handleShow = async (id) => {
+        const respuesta = await obtenerIDcolorAPI(id);
+        if (respuesta.status === 200) {
+            const colorBuscado = await respuesta.json();
+            setColorSeleccionado(colorBuscado);
+            setShow(true);
+        } else {
+            console.log("Ocurrio un error al obtener el color")
+        }
+    }
 
 
     return (
@@ -23,7 +35,7 @@ const ContainerCards = ({ colores, setColores }) => {
                     ))}
                 </div>
             </section>
-            <ModalEditarColor show={show} handleClose={handleClose} handleShow={handleShow}></ModalEditarColor>
+            <ModalEditarColor show={show} colorSeleccionado={colorSeleccionado} setColores={setColores} handleClose={handleClose} handleShow={handleShow}></ModalEditarColor>
         </>
     );
 };

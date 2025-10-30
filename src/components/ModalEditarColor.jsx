@@ -3,15 +3,35 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 import { useForm } from 'react-hook-form';
+import { editarColorAPI, listarColoresAPI } from '../helpers/queries';
+import { useEffect } from 'react';
 
-const ModalEditarColor = ({ show, handleClose }) => {
+const ModalEditarColor = ({ show, handleClose, colores, colorSeleccionado, setColores }) => {
     //validacion del formulario
-    const { reset, handleSubmit, formState: { errors }, register } = useForm();
+    const { reset, handleSubmit, formState: { errors }, register, setValue } = useForm();
 
-    const postValidaciones = (data) => {
-        console.log(data);
+    useEffect(() => {
+        if (colorSeleccionado) {
+            setValue("nombreColor", colorSeleccionado.nombreColor)
+            setValue("codigo_hex", colorSeleccionado.codigo_hex)
+        }
+    }, [colorSeleccionado, setValue])
+
+    const postValidaciones = async (data) => {
+        const respuesta = await editarColorAPI(coloresSeleccionado._id, data);
+        const rescoloresRestante = await listarColoresAPI();
+        if (respuesta.status === 200) {
+            Swal.fire({
+                title: "Color actualizado exitosamente!",
+                icon: "success",
+                draggable: true
+            });
+            const coloresRestantes = await rescoloresRestante.json();
+            setColores(coloresRestantes);
+        } else {
+            alert("Ocurrio un error al actualizar el color");
+        }
     }
-
     return (
         <Modal show={show} onHide={handleClose}>
             <Modal.Header closeButton>

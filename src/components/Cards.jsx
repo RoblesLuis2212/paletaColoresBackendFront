@@ -48,7 +48,7 @@ const Cards = ({ itemColor, setColores, handleShow }) => {
                 <p>{itemColor.codigo_hex ? itemColor.codigo_hex : "No Disponible"}</p>
             </Card.Body>
             <div className='mb-2'>
-                <Button variant='secondary' className='me-3 ms-3' onClick={() => handleShow()}>
+                <Button variant='secondary' className='me-3 ms-3' onClick={() => handleShow(itemColor._id)}>
                     <i className="bi bi-pencil-fill me-1"></i>
                     Editar
                 </Button>
