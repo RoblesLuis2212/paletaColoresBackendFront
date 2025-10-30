@@ -2,15 +2,15 @@ import React from 'react';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
-const Cards = ({ color, codigo, handleShow }) => {
+const Cards = ({ itemColor, handleShow }) => {
     return (
         <Card style={{ width: '230px' }} className='mt-3 h-100'>
             <Card.Header className='p-0'>
-                <div className="colorCards rounded-1 w-100"></div>
+                <div className="colorCards rounded-1 w-100" style={{ backgroundColor: itemColor.nombreColor }}></div>
             </Card.Header>
             <Card.Body>
-                <h4>{color}</h4>
-                <p>{codigo ? codigo : "No Disponible"}</p>
+                <h4>{itemColor.nombreColor}</h4>
+                <p>{itemColor.codigo_hex ? itemColor.codigo_hex : "No Disponible"}</p>
             </Card.Body>
             <div className='mb-2'>
                 <Button variant='secondary' className='me-3 ms-3' onClick={() => handleShow()}>

@@ -3,7 +3,7 @@ import Cards from './Cards';
 import ModalEditarColor from './ModalEditarColor';
 import FiltroColores from './FiltroColores';
 
-const ContainerCards = () => {
+const ContainerCards = ({ colores }) => {
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
@@ -16,24 +16,11 @@ const ContainerCards = () => {
             <FiltroColores></FiltroColores>
             <section className='container mt-2'>
                 <div className="row g-3">
-                    <div className="col-12 col-md-4 d-flex justify-content-center">
-                        <Cards color="Yellow" codigo="#FFFF00" handleShow={handleShow}></Cards>
-                    </div>
-                    <div className="col-12 col-md-4 d-flex justify-content-center">
-                        <Cards color="Yellow" codigo="#FFFF00" handleShow={handleShow}></Cards>
-                    </div>
-                    <div className="col-12 col-md-4 d-flex justify-content-center">
-                        <Cards color="Yellow" codigo="#FFFF00" handleShow={handleShow}></Cards>
-                    </div>
-                    <div className="col-12 col-md-4 d-flex justify-content-center">
-                        <Cards color="Yellow" codigo="#FFFF00" handleShow={handleShow}></Cards>
-                    </div>
-                    <div className="col-12 col-md-4 d-flex justify-content-center">
-                        <Cards color="Yellow" codigo="#FFFF00" handleShow={handleShow}></Cards>
-                    </div>
-                    <div className="col-12 col-md-4 d-flex justify-content-center">
-                        <Cards color="Yellow" codigo="#FFFF00" handleShow={handleShow}></Cards>
-                    </div>
+                    {colores.map((itemColor) => (
+                        <div className="col-12 col-md-4 d-flex justify-content-center" key={itemColor._id}>
+                            <Cards color="Yellow" codigo="#FFFF00" handleShow={handleShow} itemColor={itemColor}></Cards>
+                        </div>
+                    ))}
                 </div>
             </section>
             <ModalEditarColor show={show} handleClose={handleClose} handleShow={handleShow}></ModalEditarColor>
